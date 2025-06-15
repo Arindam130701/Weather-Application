@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Weather Application</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background: #e0e7ff;
+            margin: 0;
+            padding: 0;
+            }
+            h1 {
+            background: #6366f1;
+            color: #fff;
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
+            }
+            form {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            }
+            input[type="text"] {
+            padding: 10px;
+            border: 1px solid #a5b4fc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 250px;
+            }
+            button {
+            padding: 10px 20px;
+            border: none;
+            background: #6366f1;
+            color: #fff;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            }
+            button:hover {
+            background: #4f46e5;
+            }
+            h2, p {
+            text-align: center;
+            }
+            img {
+            display: block;
+            margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Weather Application</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city name">
+            <button type="submit">Get Weather</button>
+        </form>
+        <h2>Weather in {{ city }}</h2>
+        {% comment %} <p>Description: {{ description }}</p> {% endcomment %}
+        <p>Temperature: {{ temp }}°C</p>
+        <img src="http://openweathermap.org/img/wn/{{ icon }}.png" alt="Weather icon" width="100px">
+        <p>Day: {{ day }}</p>
+        
+    </body>
+</html>
